@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:fresume_app/global/models/pdf_model.dart';
-import 'package:fresume_app/global/theme/pallete.dart';
-import 'package:fresume_app/global/theme/theme.dart';
-import 'package:fresume_app/global/widgets/shape.dart';
-import 'package:fresume_app/pages/form/controller/resume_controller.dart';
-import 'package:fresume_app/pages/form/view/form_layout_view.dart';
 import 'package:provider/provider.dart';
+
+import '../../../global/models/pdf_model.dart';
+import '../../../global/theme/pallete.dart';
+import '../../../global/theme/theme.dart';
+import '../../../global/widgets/shape.dart';
+import '../../form/controller/resume_controller.dart';
+import '../../form/view/form_layout_view.dart';
 
 class LoggedHomeAuthView extends StatelessWidget {
   const LoggedHomeAuthView({Key? key}) : super(key: key);

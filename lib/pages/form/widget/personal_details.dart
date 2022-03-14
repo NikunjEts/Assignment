@@ -12,15 +12,16 @@ class PersonalDetails extends StatefulWidget {
   final Personal personal;
 
   const PersonalDetails(
-    this.personal, {
-    Key? key,
-  }) : super(key: key);
+      this.personal, {
+        Key? key,
+      }) : super(key: key);
 
   @override
   _PersonalDetailsState createState() => _PersonalDetailsState();
 }
 
 class _PersonalDetailsState extends State<PersonalDetails> {
+  bool isFirstTime = true;
   TextEditingController emailController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
   TextEditingController firstNameController = TextEditingController();
@@ -29,25 +30,14 @@ class _PersonalDetailsState extends State<PersonalDetails> {
 
   @override
   Widget build(BuildContext context) {
-    // WidgetsBinding.instance!.addPostFrameCallback((_) async {
-    //   setState(() {
-    //     if (checkChangeText(emailController.text, personal.email)) {
-    //       emailController.text = personal.email ?? "";
-    //     }
-    //     if (checkChangeText(phoneController.text, personal.phoneNumber)) {
-    //       phoneController.text = personal.phoneNumber ?? "";
-    //     }
-    //     if (checkChangeText(firstNameController.text, personal.firstName)) {
-    //       firstNameController.text = personal.firstName ?? "";
-    //     }
-    //     if (checkChangeText(lastNameController.text, personal.lastName)) {
-    //       lastNameController.text = personal.lastName ?? "";
-    //     }
-    //     if (checkChangeText(jobRoleController.text, personal.jobTitle)) {
-    //       jobRoleController.text = personal.jobTitle ?? "";
-    //     }
-    //   });
-    // });
+    if (isFirstTime) {
+      emailController.text =widget. personal.email ?? "";
+      phoneController.text = widget.personal.phoneNumber ?? "";
+      firstNameController.text = widget.personal.firstName ?? "";
+      lastNameController.text = widget.personal.lastName ?? "";
+      jobRoleController.text =widget. personal.jobTitle ?? "";
+      isFirstTime = false;
+    }
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16.0),

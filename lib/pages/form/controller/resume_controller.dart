@@ -6,31 +6,26 @@ import '../../../utils/app_shared_preferences.dart';
 class UserResumeList extends ChangeNotifier {
   List<PdfModel> pdfModels = [];
 
-  Future<void> _getResumes() async {
-    try {
-      pdfModels = await AppSharedPreferences.getPDFList();
-    } catch (e) {
-      print(e);
-    }
+  Future<void> getResumes() async {
+    pdfModels = await AppSharedPreferences.getPDFList();
+    notifyListeners();
   }
 
-  Future<bool> addToResume({required PdfModel pdfModel}) async {
-    try {
-      await AppSharedPreferences.setPDF(pdfModel);
-      pdfModels = await AppSharedPreferences.getPDFList();
-    } catch (e) {
-      print(e);
-    }
-    return true;
+  Future<void> addToResume({required PdfModel pdfModel}) async {
+    pdfModels = await AppSharedPreferences.setPDF(pdfModel);
+    notifyListeners();
   }
 
-  Future<bool> deleteFromResume({required PdfModel pdfModel}) async {
+  Future<void> deleteFromResume({required PdfModel pdfModel}) async {
+    pdfModels = await AppSharedPreferences.deletePDF(pdfModel.pdfId);
+    notifyListeners();
+  }
+
+  Future<PdfModel> getSinglePdf(int pos) async {
     try {
-      await AppSharedPreferences.deletePDF(/*pdfModel.pdfId*/ 0); //TODO POSTION
-      pdfModels = await AppSharedPreferences.getPDFList();
+      return await AppSharedPreferences.getPDF(pos);
     } catch (e) {
-      print(e);
+      rethrow;
     }
-    return true;
   }
 }

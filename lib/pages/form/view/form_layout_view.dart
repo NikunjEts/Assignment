@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:printing/printing.dart';
 import 'package:provider/provider.dart';
 
-import '../../../apis/resume.dart';
 import '../../../global/models/pdf_model.dart';
 import '../../../global/templates/template_personal.dart';
 import '../../../global/theme/pallete.dart';
@@ -30,7 +29,7 @@ class _ResumeEditState extends State<ResumeEdit> with AutomaticKeepAliveClientMi
   @override
   void initState() {
     super.initState();
-    Provider.of<PdfNotifier>(context,listen: false).setModal(widget.model);
+    Provider.of<PdfNotifier>(context, listen: false).setModal(widget.model);
   }
 
   @override
@@ -54,12 +53,12 @@ class _ResumeEditState extends State<ResumeEdit> with AutomaticKeepAliveClientMi
               onPressed: () async {
                 try {
                   PdfModel model = Provider.of<PdfNotifier>(context, listen: false).model;
-                  await Provider.of<UserResumeList>(context,listen: false).addToResume(pdfModel: model);
+                  await Provider.of<UserResumeList>(context, listen: false).addToResume(pdfModel: model);
                   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                       content: Text(
-                        'Your resume was saved!',
-                        style: bodyText14.copyWith(color: Pallete.backgroundColor),
-                      )));
+                    'Your resume was saved!',
+                    style: bodyText14.copyWith(color: Pallete.backgroundColor),
+                  )));
                   Navigator.of(context).pop();
                 } catch (e) {
                   print(e);
@@ -129,10 +128,10 @@ class _ResumeEditState extends State<ResumeEdit> with AutomaticKeepAliveClientMi
                 children: [
                   Center(
                       child: Container(
-                        height: double.infinity,
-                        color: Pallete.backgroundColor,
-                        child: const FormSide(),
-                      )),
+                    height: double.infinity,
+                    color: Pallete.backgroundColor,
+                    child: const FormSide(),
+                  )),
                   Scaffold(
                     backgroundColor: Pallete.primaryLightColor,
                     body: PdfDisplay(true),
@@ -164,26 +163,26 @@ class _ResumeEditState extends State<ResumeEdit> with AutomaticKeepAliveClientMi
             children: [
               Flexible(
                   child: Container(
-                    constraints: const BoxConstraints(maxWidth: 850),
-                    height: double.infinity,
-                    color: Pallete.backgroundColor,
-                    child: const FormSide(),
-                  )),
+                constraints: const BoxConstraints(maxWidth: 850),
+                height: double.infinity,
+                color: Pallete.backgroundColor,
+                child: const FormSide(),
+              )),
               Flexible(
                   child: Center(
-                    child: Scaffold(
-                      backgroundColor: Pallete.primaryLightColor,
-                      body: const PdfDisplay(false),
-                      bottomNavigationBar: Container(
-                        height: 60,
-                        decoration: BoxDecoration(
-                          color: Pallete.backgroundColor,
-                          borderRadius: Shape.roundedShapeOnly(topRight: 20),
-                        ),
-                        child: Row(mainAxisAlignment: MainAxisAlignment.center, children: actionButton()),
-                      ),
+                child: Scaffold(
+                  backgroundColor: Pallete.primaryLightColor,
+                  body: const PdfDisplay(false),
+                  bottomNavigationBar: Container(
+                    height: 60,
+                    decoration: BoxDecoration(
+                      color: Pallete.backgroundColor,
+                      borderRadius: Shape.roundedShapeOnly(topRight: 20),
                     ),
-                  )),
+                    child: Row(mainAxisAlignment: MainAxisAlignment.center, children: actionButton()),
+                  ),
+                ),
+              )),
             ],
           ),
         );

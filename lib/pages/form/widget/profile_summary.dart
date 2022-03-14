@@ -8,21 +8,25 @@ import '../controller/form_controller.dart';
 
 class ProfileSummary extends StatefulWidget {
   final Summary summary;
-
   const ProfileSummary(
-    this.summary, {
-    Key? key,
-  }) : super(key: key);
+      this.summary, {
+        Key? key,
+      }) : super(key: key);
 
   @override
   _ProfileSummaryState createState() => _ProfileSummaryState();
 }
 
 class _ProfileSummaryState extends State<ProfileSummary> {
+  bool isFirstTime = true;
   TextEditingController summaryController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    if (isFirstTime) {
+      summaryController.text = widget.summary.professionalSummary ?? "";
+      isFirstTime = false;
+    }
     // WidgetsBinding.instance!.addPostFrameCallback((_) async {
     //   setState(() {
     //     if (checkChangeText(summaryController.text, summary.professionalSummary)) {

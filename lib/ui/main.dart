@@ -5,6 +5,7 @@ import '../global/theme/theme.dart';
 import '../pages/form/controller/form_controller.dart';
 import '../pages/form/controller/resume_controller.dart';
 import '../pages/form/view/form_layout_view.dart';
+import '../pages/home/view/logged_home_view.dart';
 
 void main() {
   runApp(
@@ -43,7 +44,7 @@ class MyApp extends StatelessWidget {
       ),
       theme: lightThemeDta,
       initialRoute: '/',
-      home: ResumeEdit(),
+      home: LoggedHomeAuthView(),
     );
   }
 }
